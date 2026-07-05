@@ -1,4 +1,6 @@
+using FluentValidation;
 using GradeBridge.Application.Abstractions;
+using GradeBridge.Application.Validation;
 using GradeBridge.Infrastructure.Exports;
 using GradeBridge.Infrastructure.FileParsing;
 using GradeBridge.Infrastructure.Integrations;
@@ -24,6 +26,8 @@ public static class DependencyInjection
 
         services.AddScoped<IGradeTransferAdapter, MockGradeTransferAdapter>();
         services.AddScoped<StandardCsvGradeExporter>();
+        services.AddScoped<IValidator<ParsedGradeRowValidationModel>, ParsedGradeRowValidator>();
+        services.AddScoped<IGradeValidationEngine, GradeValidationEngine>();
 
         return services;
     }

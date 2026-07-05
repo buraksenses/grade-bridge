@@ -6,4 +6,12 @@
   <ItemGroup>
     <ProjectReference Include="..\GradeBridge.Domain\GradeBridge.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Validation\Rules\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+  </ItemGroup>
 </Project>
