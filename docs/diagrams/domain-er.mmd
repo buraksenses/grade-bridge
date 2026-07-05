@@ -1,0 +1,8 @@
+erDiagram
+    INSTITUTION ||--o{ IMPORT_JOB : has
+    IMPORT_JOB ||--o{ PARSED_GRADE_ROW : contains
+    IMPORT_JOB ||--o{ TRANSFER_JOB : creates
+    TRANSFER_JOB ||--o{ TRANSFER_ERROR : has
+    USER ||--o{ IMPORT_JOB : uploads
+    USER ||--o{ AUDIT_LOG : creates
+    INSTITUTION ||--o{ INSTITUTION_INTEGRATION : configures

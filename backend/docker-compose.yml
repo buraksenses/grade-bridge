@@ -1,0 +1,14 @@
+services:
+  gradebridge-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: gradebridge-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password12*"
+    ports:
+      - "1433:1433"
+    volumes:
+      - gradebridge_sqlserver_data:/var/opt/mssql
+
+volumes:
+  gradebridge_sqlserver_data:

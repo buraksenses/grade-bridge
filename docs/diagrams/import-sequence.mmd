@@ -1,0 +1,27 @@
+sequenceDiagram
+    actor Lecturer
+    participant Web as React Web App
+    participant Api as GradeBridge API
+    participant Parser as Parser Adapter
+    participant Validator as Validation Engine
+    participant Db as SQL Server
+    participant Transfer as Transfer Adapter
+
+    Lecturer->>Web: Upload optical result file
+    Web->>Api: POST /import-jobs/upload
+    Api->>Db: Create ImportJob
+    Api->>Parser: Parse file
+    Parser-->>Api: Parsed rows
+    Api->>Validator: Validate rows
+    Validator-->>Api: Validation results
+    Api->>Db: Save parsed rows
+    Api-->>Web: ImportJobId + summary
+    Lecturer->>Web: Review and approve
+    Web->>Api: POST /import-jobs/{id}/approve
+    Api->>Db: Mark rows approved
+    Lecturer->>Web: Trigger transfer/export
+    Web->>Api: POST /import-jobs/{id}/transfer
+    Api->>Transfer: Transfer approved grades
+    Transfer-->>Api: Transfer result
+    Api->>Db: Save transfer log
+    Api-->>Web: Transfer report

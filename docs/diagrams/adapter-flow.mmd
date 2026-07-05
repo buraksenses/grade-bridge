@@ -1,0 +1,6 @@
+flowchart LR
+    Input[External Input File] --> InputAdapter[Input Adapter / Parser]
+    InputAdapter --> Normalized[Normalized Grade Model]
+    Normalized --> Core[Core Grade Engine]
+    Core --> OutputAdapter[Output / Transfer Adapter]
+    OutputAdapter --> Target[UBYS / OBS / Excel / CSV / Mock]

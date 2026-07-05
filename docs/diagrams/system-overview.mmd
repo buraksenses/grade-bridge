@@ -1,0 +1,11 @@
+flowchart TD
+    Teacher[Teacher / Lecturer] --> Web[React Web App]
+    Web --> Api[GradeBridge .NET API]
+    Api --> Core[Core Grade Engine]
+    Core --> Parser[Parser Adapter]
+    Core --> Validator[Validation Engine]
+    Core --> Exporter[Export Adapter]
+    Core --> Transfer[Transfer Adapter]
+    Api --> Db[(SQL Server)]
+    Api --> Storage[File Storage]
+    Transfer --> External[UBYS / OBS / External System]
